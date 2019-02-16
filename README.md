@@ -1,2 +1,2 @@
-# CSC220-SFSU
+# Data Structures
 Data Structures
