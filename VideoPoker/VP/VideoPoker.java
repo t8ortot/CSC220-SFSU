@@ -1,8 +1,9 @@
 package VP;
 import java.util.*;
 
- /**
+/**
  * Uses Decks and Card objects to implement video poker game.
+ *
  * @author James Clark
  */
 public class VideoPoker {
@@ -14,20 +15,16 @@ public class VideoPoker {
     // default constant payout value and playerHand types
     private static final int[] MULTIPLIERS = {1, 2, 3, 5, 6, 10, 25, 50, 1000};
     private static final String[] GOODHANDTYPES = {
-        "One Pair", "Two Pairs", "Three of a Kind", "Straight", "Flush",
-        "Full House", "Four of a Kind", "Straight Flush", "Royal Flush"};
+            "One Pair", "Two Pairs", "Three of a Kind", "Straight", "Flush",
+            "Full House", "Four of a Kind", "Straight Flush", "Royal Flush"};
 
     // must use only one deck
     private final Decks oneDeck;
 
-    // holding current poker 5-card hand, balance, bet    
+    // holding current poker 5-card hand, balance, bet
     private List<Card> playerHand;
     private int playerBalance;
     private int playerBet;
-
-    // to determine winnings
-    private String winningHandType = "You lose!";
-    private int winningMultiplier = 0;
 
     /**
      * Default constructor. sets balance = startingBalance
@@ -69,9 +66,9 @@ public class VideoPoker {
      */
     private void checkHands() {
         // holds ranks of cards
-        List<Integer> tempR = new ArrayList();
+        List<Integer> tempR = new ArrayList<>();
         // holds suits of cards
-        List<Integer> tempS = new ArrayList();
+        List<Integer> tempS = new ArrayList<>();
         // winning level
         int winning = -1;
         // stragiht is true until proven false
@@ -125,7 +122,7 @@ public class VideoPoker {
 
         for (int i = 0; i < NUMBEROFCARDS - 1; i++) {
 
-            if (Objects.equals(tempR.get(i), tempR.get(i + 1)) && NUMBEROFCARDS > i + 1) {
+            if (Objects.equals(tempR.get(i), tempR.get(i + 1))) {
 
                 //two pair
                 if (winning == 0) {
@@ -141,7 +138,7 @@ public class VideoPoker {
                     winning = 5;
                 }
                 i++;
-                
+
                 //3 of a kind
                 if (NUMBEROFCARDS > i + 1 && Objects.equals(tempR.get(i), tempR.get(i + 1))) {
 
@@ -174,7 +171,7 @@ public class VideoPoker {
             System.out.println("\n\n" + GOODHANDTYPES[winning] + "!");
             System.out.println("New balance: $" + playerBalance);
 
-        // loser
+            // loser
         } else {
             // announce loss and new balance
             System.out.println("\nYou Lose!");
@@ -183,23 +180,18 @@ public class VideoPoker {
 
     }
 
+    private void displayHand(){
+        System.out.print("\nPlayer Hand: ");
+        for (int i = 0; i < NUMBEROFCARDS; i++) {
+            System.out.print((i + 1) + ".<" + playerHand.get(i).toString() + ">  ");
+        }
+    }
+
     /**
-    * Plays the game.
-    */
+     * Plays the game.
+     */
     public void play() {
-        /**
-         * The main algorithm for single player poker game
-         *
-         * Steps: showPayoutTable()
-         *
-         * ++ show balance, get bet verify bet value, update balance reset deck,
-         * shuffle deck, deal cards and display cards ask for positions of cards
-         * to replace get positions in one input line update cards check hands,
-         * display proper messages update balance if there is a payout if
-         * balance = O: end of program else ask if the player wants to play a
-         * new game if the answer is "no" : end of program else :
-         * showPayoutTable() if user wants to see it goto ++
-         */
+
         try {
             //user input
             Scanner input = new Scanner(System.in);
@@ -234,10 +226,7 @@ public class VideoPoker {
                 playerHand = oneDeck.deal(NUMBEROFCARDS);
 
                 //display hand
-                System.out.print("\nPlayer Hand: ");
-                for (int i = 0; i < NUMBEROFCARDS; i++) {
-                    System.out.print((i + 1) + ".<" + playerHand.get(i).toString() + ">  ");
-                }
+                displayHand();
 
                 //prompt for which cards should be removed
                 System.out.print("\n\nPlease list all cards (1 through 5) you'd like to replace separated by spaces"
@@ -258,10 +247,7 @@ public class VideoPoker {
                 }
 
                 // display new hand
-                System.out.print("\nPlayer Hand: ");
-                for (int i = 0; i < NUMBEROFCARDS; i++) {
-                    System.out.print((i + 1) + ".<" + playerHand.get(i).toString() + ">  ");
-                }
+                displayHand();
 
                 // determine if winner, initiates payout
                 checkHands();
@@ -288,11 +274,11 @@ public class VideoPoker {
     }
 
     /**
-    * used in main() to test the VideoPoker class
-    */
-    public void testCheckHands() {
+     * used in main() to test the VideoPoker class
+     */
+    private void testCheckHands() {
         try {
-            playerHand = new ArrayList();
+            playerHand = new ArrayList<>();
 
             // set Royal Flush
             playerHand.add(new Card(3, 1));
@@ -316,13 +302,13 @@ public class VideoPoker {
             checkHands();
             System.out.println("-----------------------------------");
 
-            // set Flush 
+            // set Flush
             playerHand.set(4, new Card(3, 5));
             System.out.println(playerHand);
             checkHands();
             System.out.println("-----------------------------------");
 
-            // "Royal Pair" , "Two Pairs" , "Three of a Kind", "Straight", "Flush   ", 
+            // "Royal Pair" , "Two Pairs" , "Three of a Kind", "Straight", "Flush   ",
             // "Full House", "Four of a Kind", "Straight Flush", "Royal Flush" };
             // set Four of a Kind
             playerHand.clear();
@@ -376,9 +362,9 @@ public class VideoPoker {
     }
 
     /**
-    * main() to test class, uses function above.
-    */
-    public static void main(String args[]) {
+     * main() to test class, uses function above.
+     */
+    public static void main(String [] args) {
         VideoPoker pokergame = new VideoPoker();
 
         pokergame.testCheckHands();
