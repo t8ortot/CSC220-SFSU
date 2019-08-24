@@ -4,6 +4,12 @@ A program that adds, subtracts, multiplies, divides, compares, simplifies fracti
 
 Learned how to use multiple files, implement interfaces, use try-catch blocks, and use constructors to create objects.
 
+Provided code:
+- FC_Test.java
+- SimpleFraction main() function
+- SimpleFractionException.java
+- SimpleFractionInterface.java
+
 How to run (assuming in FractionCalculator directory):
 - javac FC_Test.java
 - java FC_Test

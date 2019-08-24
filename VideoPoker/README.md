@@ -17,6 +17,11 @@ Winning Combinations:
 8. Straight Flush: five consecutive denomination cards of the same suit. 
 9. Royal Flush: five consecutive denomination cards of the same suit, starting from 10 and ending with an ace
 
+Provided code:
+- TestVideoPoker.java
+- PlayingCard main() function
+- VideoPoker testCheckHands() and main() functions
+
 How to run (assuming in VideoPoker directory):
 - javac TestVideoPoker.java VP/*.java
 - java TestVideoPoker to start with $100 default

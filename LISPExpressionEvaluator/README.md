@@ -16,7 +16,13 @@ This expression is evaluated successively as follows:
 2. (+ -6 24 -1.5 1)
 3. 17.5
 
-Learned how to use Stacks, 
+Learned how to use Stacks
+
+Provided code:
+- LISP_Test.java
+- LispExpressionEvalutor evaluateExprTest() and main() functions
+- LispExpressionEvaluatorException.java
+
 How to run (assuming in LISPExpressionEvaluator directory):
 - javac LISP_Test.java
 - java LISP_Test

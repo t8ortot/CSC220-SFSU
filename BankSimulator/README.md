@@ -6,6 +6,12 @@ The bank consists of several tellers and customer line (queue). Each teller will
 
 Learned how to use queues, priority queues, getters, and setters.
 
+Provided code:
+- BankSimulator main() function
+- Customer main() function
+- ServiceArea main() function
+- Teller toString() and main() functions
+
 How to run (assuming in BSIM directory):
 - javac BankSimulator.java
 - java BankSimulator
